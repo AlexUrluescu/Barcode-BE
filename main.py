@@ -16,6 +16,9 @@ CORS(app)
 
 app.config['USERS_DOCUMENTS'] = 'Input Files'
 
+if not os.path.exists(app.config['USERS_DOCUMENTS']):
+    os.makedirs(app.config['USERS_DOCUMENTS'])
+
 @app.route('/extract', methods=['POST']) 
 def extract_content():
     if 'images' not in request.files:
