@@ -30,3 +30,17 @@ class Utils():
         except Exception as e:
             print("Error:", str(e))
 
+
+
+    def delete_images(self, directory):
+        # Get list of all files in the directory
+        files = os.listdir(directory)
+        
+        # Iterate through each file
+        for file in files:
+            # Check if the file is an image file
+            if file.endswith(('.jpg', '.jpeg', '.png', '.gif')):
+                # Construct the full path of the file
+                file_path = os.path.join(directory, file)
+                # Delete the image file
+                os.remove(file_path)

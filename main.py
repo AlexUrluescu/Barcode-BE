@@ -1,4 +1,3 @@
-
 import os
 from dotenv import load_dotenv
 import base64
@@ -15,10 +14,7 @@ utils = Utils()
 
 CORS(app)
 
-app.config['USERS_DOCUMENTS'] = '/Users/alexandreurluescu/Documents/current work/ScanBarcode-Project/ScanBarcode-WEB/server/Input Files'
- 
-pdf_directory = '/Users/alexandreurluescu/Documents/current work/CogNex/CogNex-BE/server/uploads'
-
+app.config['USERS_DOCUMENTS'] = 'Input Files'
 
 @app.route('/extract', methods=['POST']) 
 def extract_content():
@@ -48,7 +44,7 @@ def extract_content():
         response.append(imageWithData)
 
 
-        
+    utils.delete_images(app.config['USERS_DOCUMENTS']) 
     return jsonify({'message': 'Images uploaded successfully', "ok": True, 'data': response})
 
 
